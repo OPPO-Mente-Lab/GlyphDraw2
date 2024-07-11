@@ -1,0 +1,16 @@
+name: glyphdraw2
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.9
+  - cudatoolkit=11.6
+  - pip:
+     - open-clip-torch==2.24.0
+     - pytorch-lightning==1.9.4
+     - rotary-embedding-torch==0.6.1
+     - torch==2.1.0+cu118
+     - torchaudio==2.1.0+cu118
+     - torchdata==0.7.1
+     - torchmetrics==1.3.0.post0
+     - torchvision==0.16.0+cu118

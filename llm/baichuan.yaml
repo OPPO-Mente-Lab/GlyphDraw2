@@ -1,0 +1,41 @@
+### model
+model_name_or_path: /mnt/data/group/majian/models/Baichuan2-13B-Chat
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+
+### ddp
+ddp_timeout: 180000000
+deepspeed: /mnt/data/group/majian/LLaMA-Factory/examples/deepspeed/ds_z3_config.json
+
+### dataset
+dataset: identity
+template: baichuan2
+cutoff_len: 1024
+max_samples: 2000000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: /mnt/data/group/majian/LLaMA-Factory/saves/baichuan_ori
+logging_steps: 10
+save_steps: 500
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 10  #60*8
+gradient_accumulation_steps: 6
+learning_rate: 0.00005
+num_train_epochs: 6.0
+lr_scheduler_type: cosine
+warmup_steps: 0.1
+fp16: true
+
+### eval
+val_size: 0.0001
+per_device_eval_batch_size: 1
+evaluation_strategy: steps
+eval_steps: 10000
